@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Think and Say Podcast - Cash & Prize Giveaways</title>
+    <!-- google font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+
+    <!-- css style start -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+
+      .container {
+        width: 100%;
+        padding-right: 16px;
+        padding-left: 16px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1320px;
+        }
+      }
+
+      .form-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 60px;
+        background-color: #8ecac6;
+        padding: 50px;
+        max-width: 1040px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 15px #12585434;
+      }
+
+      .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        position: relative;
+      }
+
+      .form-group:not(:last-child) {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        margin: 0;
+        font-size: 14px;
+        position: absolute;
+        top: -12px;
+        left: 15px;
+        padding: 2px 7px 0px;
+        background-color: #8ecac6;
+        z-index: 0;
+        color: #252525;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+
+      .form-group label span {
+        color: #ff0000;
+      }
+
+      .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #ffffff00;
+        background-clip: padding-box;
+        border: 1px solid #12585449;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+
+      .form-control:focus {
+        color: #1f1f1f;
+        border-color: #125855;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem #8fcac754;
+      }
+
+      .submit-btn {
+        color: #fff;
+        background-color: #125855;
+        border-color: #8fcac7;
+        display: block;
+        width: 100%;
+        font-weight: 400;
+        text-align: center;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: all ease 0.3s;
+        cursor: pointer;
+      }
+
+      .submit-btn:focus {
+        background-color: #125855;
+        border-color: #125855;
+        box-shadow: 0 0 0 0.25rem #12585463;
+      }
+
+      .submit-btn:hover {
+        background-color: #125855;
+        border-color: #125855;
+      }
+
+      .form-thumb img {
+        width: 450px;
+      }
+
+      .bg-shape {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        display: block;
+        overflow: hidden;
+      }
+
+      .bg-shape img {
+        height: 100%;
+        width: 100%;
+      }
+
+      .content-center-wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .alert-content-wrapper {
+        margin-top: 35px;
+      }
+
+      .alert-content-wrapper li {
+        font-size: 14px;
+        position: relative;
+        list-style: none;
+        padding-left: 15px;
+        line-height: 1.1;
+        color: #495057;
+      }
+
+      .alert-content-wrapper li::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #000;
+        top: 5px;
+      }
+
+      .alert-content-wrapper li:not(:last-child) {
+        margin-bottom: 7px;
+      }
+
+      form {
+        max-width: 390px;
+      }
+
+      input:focus ~ label {
+        font-size: 12px;
+      }
+
+      @media (max-width: 1199px) {
+        .form-wrapper {
+          padding: 40px 24px;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .bg-shape {
+          top: -50px;
+        }
+
+        .bg-shape img {
+          object-fit: cover;
+        }
+
+        .main-join-form {
+          padding-top: 16px;
+          padding-bottom: 16px;
+        }
+
+        .content-center-wrapper {
+          flex-wrap: wrap;
+          height: 100%;
+        }
+
+        .form-wrapper {
+          gap: 35px 0;
+          flex-direction: column-reverse;
+          padding: 25px 20px 35px;
+        }
+
+        form {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .form-thumb img {
+          width: 100%;
+        }
+      }
+
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-inline: 16px;
+      }
+
+      .modal::before {
+        position: fixed;
+        content: "";
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0000008a;
+      }
+
+      .modal-content img {
+        height: 400px;
+        border-radius: 15px;
+      }
+
+      .modal-content__content {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .modal-content__content h4 {
+        font-size: 32px;
+        font-family: "Playfair Display", serif;
+        line-height: 1;
+        margin-bottom: 30px;
+        color: #00ac9b;
+      }
+
+      .modal-content__content p {
+        font-size: 14px;
+        width: 325px;
+        color: #125854;
+        margin-bottom: 10px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: -25px;
+        right: -25px;
+        cursor: pointer;
+      }
+
+      .modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+      }
+
+      .show-modal {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+      }
+
+      @media (max-width: 650px) {
+        .close-btn {
+          right: 20px;
+          top: -40px;
+        }
+      }
+
+      @media (max-width: 575px) {
+        .modal-content {
+          width: 100%;
+        }
+
+        .modal-content img {
+          width: 100%;
+          height: auto;
+        }
+
+        .modal-content__content h4 {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        .modal-content__content p {
+          font-size: 12px;
+          max-width: 280px;
+        }
+      }
+
+      @media (max-width: 390px) {
+        .modal-content__content h4 {
+          font-size: 22px;
+          margin-bottom: 20px;
+        }
+
+        .modal-content__content p {
+          max-width: 250px;
+        }
+      }
+    </style>
+    <!-- css style end -->
+
+    <style>
+      .form-group span {
+        /* display: none; */
+        font-size: 13px;
+        color: #c70a0a;
+        display: none;
+      }
+      .form-group.duplicate span {
+        display: inline-block;
+      }
+      .form-group.error .form-control {
+        border-color: #c70a0a;
+      }
+
+      .form-group.error label {
+        color: #c70a0a;
+      }
+
+      .alert-content-wrapper {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-join-form">
+      <div class="bg-shape" style="z-index: -2">
+        <img src="./bg-shape2.png" alt="bg img" />
+      </div>
+      <div class="container">
+        <div class="content-center-wrapper">
+          <div class="form-wrapper">
+            <form action="./form.php" id="userForm" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" id="firstName" name="firstName" />
+                <label for="firstName">First Name<span>*</span></label>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="lastName" name="lastName" />
+                <label for="lastName">Last Name<span>*</span></label>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" />
+                <label for="email">Email Address<span>*</span></label>
+                <span>Email address already exists</span>
+              </div>
+              <div class="form-group">
+                <input type="tel" class="form-control" id="phone" name="phone" />
+                <label for="phone">Phone Number<span>*</span></label>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="ytUsername" name="ytUsername" />
+                <label for="ytUsername">YouTube Username<span>*</span></label>
+                <span>YouTube Username already exists</span>
+              </div>
+              <div class="form-group">
+                <button class="submit-btn trigger" id="submitBtn">Submit</button>
+              </div>
+              <ul class="alert-content-wrapper">
+                <li>The information you provide will ONLY be used to verify who you say you are.</li>
+                <li>And also be used to notify you of any winnings, opportunities, and updates.</li>
+                <li>We will not sell or trade your information with any third parties.</li>
+              </ul>
+            </form>
+            <div class="form-thumb">
+              <img src="./thumb2.png" alt="thumb" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- congratulation modal start -->
+    <div class="modal">
+      <div class="modal-content">
+        <img src="./congratulation.png" alt="congratulation img" />
+        <div class="modal-content__content">
+          <h4>Congratulation!!</h4>
+          <p>You've just unlocked the door for your opportunity! at WINNING BIG in our Cash & Prize Giveaway.</p>
+          <p style="padding-top: 4px; font-size: 16px; color: #00ac9b"><b>Let the winnings begin!!!</b></p>
+          <p>While anyone can join in the excitement, only USA residents will be eligible to claim the grand prize.</p>
+        </div>
+        <span class="close-btn">
+          <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M6 6L18 18M18 6L6 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </span>
+      </div>
+    </div>
+    <!-- congratulation modal end -->
+
+    <!-- form js -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.querySelector(".modal");
+        var closeButton = document.querySelector(".close-btn");
+        var form = document.getElementById("userForm");
+
+        function toggleModal() {
+          modal.classList.toggle("show-modal");
+        }
+
+        function windowOnClick(event) {
+          if (event.target === modal) {
+            toggleModal();
+          }
+        }
+
+        closeButton.addEventListener("click", toggleModal);
+        window.addEventListener("click", windowOnClick);
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          let valid = true;
+          const inputs = document.querySelectorAll(".form-control");
+
+          inputs.forEach((input) => {
+            const formGroup = input.parentElement;
+            if (input.value.trim() === "") {
+              formGroup.classList.add("error");
+              valid = false;
+            } else {
+              formGroup.classList.remove("error");
+            }
+
+            // Add input event listener to remove error class while typing
+            input.addEventListener("input", function () {
+              if (input.value.trim() !== "") {
+                formGroup.classList.remove("error");
+                formGroup.classList.remove("duplicate");
+              }
+            });
+          });
+
+          if (valid) {
+            // If form is valid, submit the form via AJAX and show the modal
+            fetch(form.action, {
+              method: "POST",
+              body: new FormData(form),
+            })
+              .then((response) => response.text())
+              .then((data) => {
+                if (data.includes("New record created successfully")) {
+                  // Clear all inputs
+                  inputs.forEach((input) => {
+                    input.value = "";
+                    input.parentElement.classList.remove("error");
+                  });
+
+                  // Show the modal after a 300ms delay
+                  setTimeout(toggleModal, 300);
+                } else if (data.includes("Email already exists")) {
+                  const emailInput = document.getElementById("email");
+                  emailInput.parentElement.classList.add("duplicate");
+                  // alert("Email already exists");
+                } else if (data.includes("YouTube username already exists")) {
+                  const ytUsernameInput = document.getElementById("ytUsername");
+                  ytUsernameInput.parentElement.classList.add("duplicate");
+                  // alert("YouTube username already exists");
+                } else {
+                  alert("There was an error submitting the form: " + data);
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          }
+        });
+      });
+    </script>
+    <!-- form js -->
+  </body>
+</html>
