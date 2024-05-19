@@ -223,6 +223,29 @@
           gap: 40px;
         }
       }
+      
+      .form-group span {
+        /* display: none; */
+        font-size: 13px;
+        color: #c70a0a;
+        display: none;
+      }
+      .form-group.duplicate span {
+        display: inline-block;
+      }
+      .form-group.error .form-control {
+        border-color: #c70a0a;
+      }
+
+      .form-group.error label {
+        color: #c70a0a;
+      }
+
+      .alert-content-wrapper {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+      }
 
       @media (max-width: 991px) {
         .bg-shape {
@@ -372,31 +395,6 @@
       }
     </style>
     <!-- css style end -->
-
-    <style>
-      .form-group span {
-        /* display: none; */
-        font-size: 13px;
-        color: #c70a0a;
-        display: none;
-      }
-      .form-group.duplicate span {
-        display: inline-block;
-      }
-      .form-group.error .form-control {
-        border-color: #c70a0a;
-      }
-
-      .form-group.error label {
-        color: #c70a0a;
-      }
-
-      .alert-content-wrapper {
-        list-style: none;
-        padding: 0;
-        margin-top: 20px;
-      }
-    </style>
   </head>
 
   <body>
