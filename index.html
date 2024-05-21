@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" sizes="16x16" />
     <title>Think and Say Podcast - Cash & Prize Giveaways</title>
     <!-- google font link -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
@@ -223,7 +224,7 @@
           gap: 40px;
         }
       }
-      
+
       .form-group span {
         /* display: none; */
         font-size: 13px;
@@ -235,6 +236,12 @@
       }
       .form-group.error .form-control {
         border-color: #c70a0a;
+      }
+      .form-group.age-not-allowed .form-control {
+        border-color: #c70a0a;
+      }
+      .form-group.age-not-allowed span {
+        display: inline-block;
       }
 
       .form-group.error label {
@@ -424,6 +431,11 @@
                 <label for="phone">Phone Number<span>*</span></label>
               </div>
               <div class="form-group">
+                <input type="number" class="form-control" id="age" name="age" />
+                <label for="age">Age<span>*</span></label>
+                <span>too young to participate</span>
+              </div>
+              <div class="form-group">
                 <input type="text" class="form-control" id="ytUsername" name="ytUsername" />
                 <label for="ytUsername">YouTube Username<span>*</span></label>
                 <span>YouTube Username already exists</span>
@@ -492,6 +504,7 @@
           event.preventDefault();
 
           let valid = true;
+          const ageInput = document.getElementById("age");
           const inputs = document.querySelectorAll(".form-control");
 
           inputs.forEach((input) => {
@@ -511,6 +524,14 @@
               }
             });
           });
+
+          // Check if age is less than 16
+          if (parseInt(ageInput.value, 10) < 16) {
+            ageInput.parentElement.classList.add("age-not-allowed");
+            valid = false;
+          } else {
+            ageInput.parentElement.classList.remove("age-not-allowed");
+          }
 
           if (valid) {
             // If form is valid, submit the form via AJAX and show the modal
