@@ -174,11 +174,12 @@
       }
 
       .content-center-wrapper {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        padding: 30px 0  30px;
       }
 
       .alert-content-wrapper {
@@ -400,6 +401,31 @@
           max-width: 250px;
         }
       }
+
+      .footer-links {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        padding-top: 25px;
+        /* position: fixed;
+        left: 0;
+        bottom: 0; */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 15px 30px;
+        list-style: none;
+      }
+      .footer-links li {
+        text-align: center;
+      }
+      .footer-links li a {
+        color: #495057;
+        font-weight: 500;
+      }
+      .footer-links li a:hover {
+        color: #125854;
+      }
     </style>
     <!-- css style end -->
   </head>
@@ -450,12 +476,19 @@
               </ul>
             </form>
             <div class="form-thumb">
+              <h1 style="font-size: 20px; text-align: center; margin-bottom: 25px; color: #125854;">Think and Say Cash & Prize Giveaways</h1>
               <img src="./thumb2.png" alt="thumb" />
             </div>
           </div>
+          <ul class="footer-links">
+            <li>
+              <a href="">Terms</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+
 
     <!-- congratulation modal start -->
     <div class="modal">
