@@ -21,11 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
     $email = isset($_POST['email']) ? trim($_POST['email']) : '';
     $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $age = isset($_POST['age']) ? trim($_POST['age']) : '';
     $ytUsername = isset($_POST['ytUsername']) ? trim($_POST['ytUsername']) : '';
     $createdTime = date('Y-m-d H:i:s'); // Current timestamp
 
     // Server-side validation
-    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($ytUsername)) {
+    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($age) && !empty($ytUsername)) {
         // Check if email already exists
         $emailQuery = "SELECT email FROM users WHERE email = ?";
         $emailStmt = $conn->prepare($emailQuery);
@@ -46,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "YouTube username already exists";
         } else {
             // Prepare and bind
-            $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, phone, ytUsername, created_time) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $firstName, $lastName, $email, $phone, $ytUsername, $createdTime);
+            $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, phone, age, ytUsername, created_time) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssss", $firstName, $lastName, $email, $phone, $age, $ytUsername, $createdTime);
 
             // Execute the statement
             if ($stmt->execute()) {
@@ -70,4 +71,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close the connection
 $conn->close();
-?>
