@@ -457,7 +457,7 @@
       #submitBtn:disabled {
         background-color: #125854; /* Grey background */
         cursor: not-allowed; /* Show not-allowed cursor */
-        opacity: .35;
+        opacity: 0.35;
       }
     </style>
     <!-- css style end -->
@@ -627,6 +627,7 @@
         var modal = document.querySelector(".modal");
         var closeButton = document.querySelector(".close-btn");
         var form = document.getElementById("userForm");
+        const checkTerms = document.getElementById("checkTerms");
 
         function toggleModal() {
           modal.classList.toggle("show-modal");
@@ -698,6 +699,7 @@
                     input.parentElement.classList.remove("error");
                   });
                   stateSelect.value = ""; // Clear the state select
+                  checkTerms.checked = false; // Clear the state select
 
                   // Show the modal after a 300ms delay
                   setTimeout(toggleModal, 300);
