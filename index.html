@@ -450,6 +450,15 @@
       .title img {
         width: 56px;
       }
+      select {
+        height: 35px;
+      }
+      /* Optional: Style for disabled button */
+      #submitBtn:disabled {
+        background-color: #125854; /* Grey background */
+        cursor: not-allowed; /* Show not-allowed cursor */
+        opacity: .35;
+      }
     </style>
     <!-- css style end -->
   </head>
@@ -463,13 +472,15 @@
         <div class="content-center-wrapper">
           <div class="form-wrapper">
             <form action="./form.php" id="userForm" method="post">
-              <div class="form-group">
-                <input type="text" class="form-control" id="firstName" name="firstName" />
-                <label for="firstName">First Name<span>*</span></label>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="lastName" name="lastName" />
-                <label for="lastName">Last Name<span>*</span></label>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px">
+                <div class="form-group" style="margin: 0">
+                  <input type="text" class="form-control" id="firstName" name="firstName" />
+                  <label for="firstName">First Name<span>*</span></label>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="lastName" name="lastName" />
+                  <label for="lastName">Last Name<span>*</span></label>
+                </div>
               </div>
               <div class="form-group">
                 <input type="email" class="form-control" id="email" name="email" />
@@ -545,8 +556,12 @@
                 </select>
                 <label for="state">State<span>*</span></label>
               </div>
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px">
+                <input type="checkbox" class="" id="checkTerms" style="width: 18px; height: 18px" />
+                <label for="checkTerms" style="font-size: 14px">I agree to the Sweepstake terms<span>*</span></label>
+              </div>
               <div class="form-group">
-                <button class="submit-btn trigger" id="submitBtn">Submit</button>
+                <button class="submit-btn trigger" id="submitBtn" disabled>Submit</button>
               </div>
               <ul class="alert-content-wrapper">
                 <li>The information you provide will ONLY be used to verify who you say you are.</li>
@@ -590,6 +605,21 @@
       </div>
     </div>
     <!-- congratulation modal end -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const checkTerms = document.getElementById("checkTerms");
+        const submitBtn = document.getElementById("submitBtn");
+
+        checkTerms.addEventListener("change", () => {
+          if (checkTerms.checked) {
+            submitBtn.disabled = false;
+          } else {
+            submitBtn.disabled = true;
+          }
+        });
+      });
+    </script>
 
     <!-- form js -->
     <script>
