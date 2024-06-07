@@ -1,7 +1,6 @@
 <?php
 // Set the default time zone to Eastern Time (USA)
 date_default_timezone_set('America/New_York');
-// Database connection details
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,7 +15,6 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if keys exist in $_POST array
     $firstName = isset($_POST['firstName']) ? trim($_POST['firstName']) : '';
     $lastName = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
     $email = isset($_POST['email']) ? trim($_POST['email']) : '';
@@ -24,18 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = isset($_POST['age']) ? trim($_POST['age']) : '';
     $ytUsername = isset($_POST['ytUsername']) ? trim($_POST['ytUsername']) : '';
     $state = isset($_POST['state']) ? trim($_POST['state']) : '';
+    $promoSource = isset($_POST['promoSource']) ? (trim($_POST['promoSource']) === 'Other' ? trim($_POST['other']) : trim($_POST['promoSource'])) : ''; // Add this line
     $createdTime = date('Y-m-d H:i:s');
 
-    // Server-side validation
-    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($age) && !empty($ytUsername) && !empty($state)) {
-        // Check if email already exists
+    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($phone) && !empty($age) && !empty($ytUsername) && !empty($state) && !empty($promoSource)) {
         $emailQuery = "SELECT email FROM users WHERE email = ?";
         $emailStmt = $conn->prepare($emailQuery);
         $emailStmt->bind_param("s", $email);
         $emailStmt->execute();
         $emailResult = $emailStmt->get_result();
 
-        // Check if YouTube username already exists
         $ytUsernameQuery = "SELECT ytUsername FROM users WHERE ytUsername = ?";
         $ytUsernameStmt = $conn->prepare($ytUsernameQuery);
         $ytUsernameStmt->bind_param("s", $ytUsername);
@@ -47,22 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($ytUsernameResult->num_rows > 0) {
             echo "YouTube username already exists";
         } else {
-            // Prepare and bind
-            $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, phone, age, ytUsername, state, created_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssssss", $firstName, $lastName, $email, $phone, $age, $ytUsername, $state, $createdTime);
+            $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, phone, age, ytUsername, state, promoSource, created_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"); // Update this line
+            $stmt->bind_param("sssssssss", $firstName, $lastName, $email, $phone, $age, $ytUsername, $state, $promoSource, $createdTime); // Update this line
 
-            // Execute the statement
             if ($stmt->execute()) {
                 echo "New record created successfully";
             } else {
                 echo "Error: " . $stmt->error;
             }
 
-            // Close the statement
             $stmt->close();
         }
 
-        // Close the result sets
         $emailStmt->close();
         $ytUsernameStmt->close();
     } else {
@@ -70,6 +62,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Close the connection
 $conn->close();
 ?>
